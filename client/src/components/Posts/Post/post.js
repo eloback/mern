@@ -17,11 +17,12 @@ const Post = ({ post, setCurrentId })=>{
     const user = JSON.parse(localStorage.getItem('profile'));
 
     const Likes = () => {
-      if(post.likes.length > 0){
+      let postLikesLength = post.likes.length;
+      if(postLikesLength > 0){
         return post.likes.find((like) => like === (user?.result?.googleId ||  user?.result?._id)) ? (
-            <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others ` : `${post.likes.length} like${post.likes.lengh > 1 ?  's'  :  ''}`  }</>
+            <><ThumbUpAltIcon fontSize="small" />&nbsp;{postLikesLength > 2 ? `You and ${postLikesLength - 1} others ` : `${postLikesLength} like${post.likes.lengh > 1 ?  's'  :  ''}`  }</>
             ) :  (
-            <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'  }</>
+            <><ThumbUpAltOutlined fontSize="small" />&nbsp;{postLikesLength} {postLikesLength === 1 ? 'Like' : 'Likes'  }</>
         );
       }
       return <><ThumbUpAltOutlined fontSize="small"/>&nbsp;Like</>;
