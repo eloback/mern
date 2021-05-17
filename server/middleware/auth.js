@@ -6,7 +6,7 @@ const auth = async (req, res, next) => {
     const isCustomAuth = token.length < 500;
     let decodedData;
     if(token && isCustomAuth){
-      decodedData = jwt.verify(token, 'changetoenv');
+      decodedData = jwt.verify(token, process.env.SECRET);
       req.userId = decodedData?.id;
     }else{
       decodedData = jwt.decode(token);
