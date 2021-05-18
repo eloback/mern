@@ -2,9 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import bodyParser from "body-parser";
-const Connection_URI =  'mongodb://mongo:27017/memories' // Docker Mongo
+const Connection_URI =  process.env.MONGODB_URI
+//const Connection_URI = 'mongodb://mongo:27017/memories' // Docker Mongo
 //const Connection_URI = 'mongodb://127.0.0.1:27017/memories' //Local Mongo
-//const Connection_URI = 'mongodb+srv://'+process.env.DB_KEY+'@cluster0.jq9b3.mongodb.net/'+process.env.DB_NAME+'?retryWrites=true&w=majority' // Mongo Atlas
+//const Connection_URI = 'mongodb+srv://'+process.env.DB_USER:process.env.DB_KEY+'@cluster0.jq9b3.mongodb.net/'+process.env.DB_NAME+'?retryWrites=true&w=majority' // Mongo Atlas
 const PORT = process.env.PORT || 3001;
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/user.js'
