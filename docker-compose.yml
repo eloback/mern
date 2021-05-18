@@ -1,18 +1,41 @@
 version: '3'
 services:
-  api:
-    container_name: api-container
-    restart: always
-    build: ./server
-    image: eloback/server
-    ports:
-      - "5001:3001"
-  client:
+  react-app:
+    stdin_open: true
     container_name: client-container
     restart: always
     build: ./client
     image: eloback/client
     ports:
-      - "5000:3000"
+      - "3000:3000"
     depends_on:
-      - api
+      - api-server
+    networks:
+      - mern-app
+  api-server:
+    container_name: api-container
+    restart: always
+    build: ./server
+    image: eloback/server
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    networks:
+      - mern-app
+    env_file:
+      - ./server/.env
+  mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mern-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
