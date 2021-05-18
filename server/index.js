@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import bodyParser from "body-parser";
+import dotenv from 'dotenv';
 dotenv.config();
 const Connection_URI = 'mongodb+srv://'+process.env.DB_KEY+'@cluster0.jq9b3.mongodb.net/'+process.env.DB_NAME+'?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;
