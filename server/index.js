@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import bodyParser from "body-parser";
+//local development
+import dotenv from 'dotenv'
+dotenv.config()
 const Connection_URI =  process.env.MONGODB_URI
 //const Connection_URI = 'mongodb://mongo:27017/memories' // Docker Mongo
 //const Connection_URI = 'mongodb://127.0.0.1:27017/memories' //Local Mongo
