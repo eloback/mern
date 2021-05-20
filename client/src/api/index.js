@@ -1,6 +1,7 @@
 import axios from 'axios';
-
-const   API = axios.create({ baseURL: 'http://localhost:3001' });
+// 'http://localhost:3001'
+// 'https://eloback-memories.herokuapp.com/'
+const   API = axios.create({ baseURL: 'https://eloback-memories.herokuapp.com/' });
 
 API.interceptors.request.use((req)=>{
   const profile = localStorage.getItem('profile');

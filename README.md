@@ -7,5 +7,8 @@ create .env
 create env in server folder.
 
 ///DEPLOY
+in client:
+change api endpoints
+build react
 in server:
 heroku git:remote -a eloback-memories

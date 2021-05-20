@@ -19,7 +19,6 @@ const PostDetails = () =>{
       // eslint-disable-next-line
   }, [id] );
   let recommendedPosts = [];
-  if(posts) recommendedPosts = posts.filter(({_id})=> _id !== post._id);
 
   useEffect(()=>{
     if(post){
@@ -29,6 +28,7 @@ const PostDetails = () =>{
   }, [post]);
 
   if(!post) return null;
+  if(posts) recommendedPosts = posts.filter(({_id})=> _id !== post._id);
 
   if(isLoading){
     return <Paper elevation={6} className={classes.loadingPaper}>
@@ -46,7 +46,7 @@ const PostDetails = () =>{
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
           <Typography gutterBottom variant="body1" component="p">{post.message}</Typography>
           <Typography variant="h6">Created by: {post.name}</Typography>
-          <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
+          <Typography variant="body1">{moment(post.createAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
           <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
           <Divider style={{ margin: '20px 0' }} />
