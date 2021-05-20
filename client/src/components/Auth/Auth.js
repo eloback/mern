@@ -49,7 +49,7 @@ const Auth = () => {
       }
     }
     const googleFailure = () =>{
-      console.log("google sign in is a failure")
+      alert("google sign in is a failure")
     }
 
     const switchMode = () => {
